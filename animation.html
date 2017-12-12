@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>second animation</title>
+
+<script type="text/javascript">
+var arr = new Array("sa1.jpg","sa2.jpg","sa3.jpg");
+var i=1;
+var ref;
+function piclib()
+{
+	document.images[0].src=arr[i];
+	i++;
+	if(i>2)
+	i=0;
+}
+function start(){ref = setInterval("piclib()",1000);}
+function stop(){clearInterval(ref);}
+</script>
+
+</head>
+
+<body onload="start()">
+
+<img src="sa1.jpg" name="sw" onmouseover="stop()" onmouseout="start()"/>
+</body>
+</html>
