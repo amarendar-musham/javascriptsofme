@@ -1,0 +1,208 @@
+<html>
+
+<head>
+<title>demo</title>
+</head>
+
+<body onload="Load()" > 
+
+<script language="javascript" type="text/javascript">
+
+//variable
+// in java script no need to mention the data type
+/*var name = "amar", age = 23;
+var money = 56585.00;
+document.write("name: " + name + "<br />" + "age: " + age + "<br />");
+document.write("money: " + money + "<br />");
+*/
+
+//dialogbox
+// ---alert, confirm, prompt
+/*
+var gname = prompt("please enter", "your good name.....");
+alert("hello " + gname);
+var result =confirm("are you sure to do this", "confirm to do");
+document.write(result);  //this will writes true/false
+*/
+
+//operators
+//assignment +-*/%, comparision<>=, logical&&||!
+//document.write(age == 23); // true/false
+/*
+var uid = prompt("Enter username", "username");
+var pass = prompt("Enter password", "password");
+var msg = (uid == "amar" && pass == "good") ? "Welcome " + name	 : "INvalid";
+document.write(msg); 
+*/
+
+//conditional statements If.. Else, Switch
+/*
+ var marks = prompt("Enter total marks", "Enter");
+var percent = marks * 100 / 600 ;
+if(percent > 80) 
+{ document.write("percentage = " + percent + "<br />" + "and you are GradeA"+ "<br />"); }
+else if(percent > 60)
+{ document.write("percentage = " + percent + "<br />" + "and you are GradeB"+ "<br />"); }
+switch(Math.trunc(percent))
+{
+case 100:
+case 99:
+		document.write("Ur the gold medalist");break;
+default:
+		document.write("Congratualtions man"); break;
+}
+*/
+
+//for loop - for factorial
+/*
+var i, mul = 1 ;
+var num = parseInt(prompt("Enter value","Please type"));
+for(i=1; i<=num; i++)
+{mul = mul * i;} document.write("factorial = " + mul);
+*/
+//while loop - for no. of digits
+/*
+var num = parseInt(prompt("Enter value","Please type"));
+var count = 0 ;
+while(num > 0)
+{ num = Math.trunc(num / 10); count++; }
+document.write("digits = " + count);	
+*/
+//Do while loop 
+/*
+var pin;
+var actualpin = "good";
+var count = 0;
+do { pin = prompt("Enter pin", "your pin"); count++ ; } while( pin != actualpin && count < 3 ) ;
+if (pin == actualpin) { document.write("Welcome user") ;} else document.write("Account Locked"); 
+*/
+
+//Loopcontrol statements - break, continue
+//Array
+/*var arr = new Array(10,5,54,568,8);
+var i;
+for(i=0;i<5;i++) {document.write(arr[i] + "<br />");}
+*/
+
+//Strings
+/*
+var str = "Ur not in the selected area";
+document.write(str.charAt(3) + "<br />"); // U can use < charAt, charCodeAt(3), concat, indexof, toLowerCase, toUpperCase, split > function inside the string
+document.write(str.split(" ",3));
+*/
+
+//Objects - like array ---having keys and values
+/*
+var details = {"name" : "amar", "age" : "23", "view" : "online"}  ;
+document.write("Name is " + details.name + "<br />" + "age " + details.age + "<br /><br />" );
+
+var txt="", x ;
+for(x in details) {  txt += details[x] + "<br />"; }
+document.write(txt);
+*/
+
+//Date
+/*
+document.write(Date() + "<br />");
+var d = new Date("Nov 23, 2014 05:45:55");
+document.write(d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "<br />" + d.getDay()); // getHours, Minutes, Seconds
+*/
+
+function hello(name, age)
+{
+if(name == "" || age == "") {alert("please give input");} // or give < return false ; >
+else if(age < 18){alert("this is not for you");}
+else document.write(name + " u adfwf" + age);
+}
+//try catch finally
+function myfunc(){var a = prompt("enter a char","character") ; 
+try { var s = a.toUpperCase(); alert("value is " + s);}
+catch (e) { alert("Error"); }
+finally { alert("finall is excuted");}
+}
+//Events
+function Mouseover(){ document.images["samantha"].src = "Saman1.jpg"; }
+function Mouseout(){ document.images["samantha"].src = "Saman2.jpg"; }
+function Load(){ document.images["samantha"].src = "Saman.jpg"; }
+/*
+for body element,u can write< onload="Load()" > 
+also u can use it will redirect in 5 sec
+
+<body onload="setTimeout('Redirect()', 5000)">
+
+below we have Redirect function having window.location window is object and its method, it is used to page redirect.
+*/
+function Redirect(){window.location="http://www.google.com"}
+function writecokie(){ 
+if(document.myform.customer.value == "")
+{alert("Enter some value");return;}
+var cokievalue = escape(document.myform.customer.value) + ";";
+document.cookie = "name=" + cokievalue ;
+document.write("settingcokie: " + cokievalue);
+}
+
+function validate()
+{
+	if(document.form2.Name.value == ""){alert("please provide name");document.form2.Name.focus();return false;}
+	if(document.form2.Email.value == ""){alert("please provide Email");document.form2.Email.focus();return false;}
+	if(document.form2.Zip.value == ""){alert("please provide Zip");document.form2.Zip.focus();return false;}
+	if(document.form2.Country.value == "-1"){alert("Please provide country");document.form2.Country.focus();return false;}
+return(true);	
+
+}
+
+
+</script>
+
+<img name="samantha" align="right" onmouseover="Mouseover()" onmouseout="Mouseout()" />
+
+<form>
+<input name="t1" placeholder="name" /><br />
+<input name="t2" placeholder="age" /><br />
+<input type="button" onclick="hello(t1.value,t2.value)" value="submit(functions)"/>
+<br /><br /><br />
+<input type="button" onclick="myfunc()" value="uppercase(trycatch)"/>
+</form>
+<form name="myform" action="">
+Enter name: <input type="text" name="customer"  />
+<input type="button" onclick="writecokie()" value="set cokie" />
+</form>
+
+
+<form action="#" name="form2" onsubmit="return(validate());">
+
+<table cellpadding="2" cellspacing="2" border="1">
+<tr>
+<td align="right">Name</td>
+<td><input type="text" name="Name" /></td>
+</tr>
+<tr>
+<td align="right">Email</td>
+<td><input type="text" name="Email" /></td>
+</tr>
+<tr>
+<td align="right">Zip</td>
+<td><input type="text" name="Zip" /></td>
+</tr>
+<tr>
+<td align="right">Country</td>
+<td>
+<select name="Country">
+	<option value="-1">[choose yours] </option>
+	<option value="1">India </option>
+	<option value="2">United states</option>
+	<option value="3">Canada</option>
+	<option value="4">pakistan </option>
+</select>
+</td>
+</tr>
+<tr>
+<td align="right"></td>
+<td><input type="submit" value="submit" /></td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>
